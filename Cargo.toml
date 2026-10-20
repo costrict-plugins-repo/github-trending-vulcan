@@ -1,0 +1,88 @@
+[workspace]
+members  = ["vulcan", "vulcan-lib"]
+resolver = "2"
+
+[workspace.dependencies]
+vulcan-lib = { path = "vulcan-lib" }
+
+# Rise SDK
+phoenix-rise = "0.3.1"
+
+# CLI
+clap = { version = "4", features = ["derive"] }
+
+# Async
+tokio = { version = "1.44", features = ["rt-multi-thread", "macros", "sync", "time"] }
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+toml = "0.8"
+
+# HTTP
+reqwest = { version = "0.12", features = ["json"] }
+
+# Solana
+solana-sdk = "3"
+# Fireblocks is intentionally omitted: some modes can auto-broadcast, while
+# Vulcan expects every signer to return a locally submittable transaction.
+solana-keychain = { version = "1.4", default-features = false, features = [
+    "memory",
+    "vault",
+    "privy",
+    "turnkey",
+    "gcp_kms",
+    "cdp",
+    "para",
+    "crossmint",
+    "dfns",
+    "openfort",
+    "sdk-v3",
+] }
+solana-pubkey = { version = "3", features = ["curve25519"] }
+solana-instruction = { version = "3", default-features = false, features = ["std"] }
+solana-rpc-client = "3"
+solana-rpc-client-api = "3"
+solana-commitment-config = "3"
+solana-compute-budget-interface = "3"
+
+# Encryption
+aes-gcm = "0.10"
+argon2 = "0.5"
+rand = "0.8"
+zeroize = { version = "1", features = ["derive"] }
+
+# Encoding
+bs58 = "0.5"
+base64 = "0.22"
+
+# Output
+comfy-table = "7"
+colored = "2"
+
+# Error handling
+anyhow = "1"
+thiserror = "2"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Time
+chrono = { version = "0.4", features = ["serde"] }
+
+# Versioning
+semver = "1"
+
+# Password input
+rpassword = "5"
+
+# MCP
+rmcp = { version = "1.2", features = ["server", "transport-io"] }
+schemars = "1.0"
+
+# Directories
+dirs = "5"
+
+# Technical analysis
+kand = "0.2"
